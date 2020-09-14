@@ -1,18 +1,36 @@
 import React from 'react';
+import {Grid, makeStyles} from '@material-ui/core';
 import SwipeableViews from 'react-swipeable-views';
+import Timeline from '../../timeline';
+import Review from '../../review';
+
+const useStyles = makeStyles(theme =>({
+    container: {
+        flexGrow: 1,
+        width: '100vw',
+        height: '100vh',
+        spacing: 0,
+    }
+}));
 
 export default function NavPanel(props) {
+    const classes = useStyles();
+
     return (
-        <div>
+        <Grid 
+            container 
+            justify="center"
+            alignItems="center"
+            className={classes.container}>
             <SwipeableViews
                 index={props.index}
                 onChangeIndex={props.setIndex}>
-                <div>1</div>
-                <div>1</div>
-                <div>1</div>
-                <div>1</div>
-                <div>1</div>
+                <Review />
+                <Timeline />
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
             </SwipeableViews>
-        </div>
+        </Grid>
     );
 }
