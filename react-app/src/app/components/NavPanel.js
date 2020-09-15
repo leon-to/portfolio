@@ -3,6 +3,7 @@ import {Grid, makeStyles} from '@material-ui/core';
 import SwipeableViews from 'react-swipeable-views';
 import Timeline from '../../timeline';
 import Review from '../../review';
+import Strength from '../../strength';
 
 const useStyles = makeStyles(theme =>({
     container: {
@@ -28,7 +29,7 @@ export default function NavPanel(props) {
                 <Review />
                 <Timeline />
                 <div>3</div>
-                <div>4</div>
+                <Strength />
                 <div>5</div>
             </SwipeableViews>
         </Grid>
