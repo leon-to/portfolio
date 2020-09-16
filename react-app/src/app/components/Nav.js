@@ -1,6 +1,7 @@
-import React from 'react';
-import {Avatar, Drawer, List, Tabs, Tab, Grid, makeStyles} from '@material-ui/core';
+import React, { useContext } from 'react';
+import {TabIndexContext} from '../contexts/TabIndexContext';
 
+import {Avatar, Drawer, List, Tabs, Tab, Grid, makeStyles} from '@material-ui/core';
 import TimelineIcon from '@material-ui/icons/Timeline';
 import AccountTreeIcon from '@material-ui/icons/AccountTree';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
@@ -15,6 +16,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Nav(props){
     const classes = useStyles();
+    const {TabIndex, setTabIndex} = useContext(TabIndexContext);
 
     const tabs = [
         {icon: <Avatar src={avatar}/>, label: 'Leon To'},
@@ -26,7 +28,7 @@ export default function Nav(props){
 
 
     const onChange = (event, newIndex) =>{
-        props.setIndex(newIndex);
+        setTabIndex(newIndex);
     } 
 
     return (
@@ -38,7 +40,7 @@ export default function Nav(props){
                 <Tabs 
                     orientation='horizontal'
                     variant='scrollable'
-                    value={props.index}
+                    value={TabIndex}
                     onChange={onChange}>
 
                     {tabs.map(tab => (

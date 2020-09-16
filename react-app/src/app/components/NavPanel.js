@@ -1,9 +1,11 @@
-import React from 'react';
-import {Grid, makeStyles} from '@material-ui/core';
-import SwipeableViews from 'react-swipeable-views';
+import React, {useContext} from 'react';
+import {TabIndexContext} from '../contexts/TabIndexContext';
 import Timeline from '../../timeline';
 import Review from '../../review';
 import Strength from '../../strength';
+
+import {Grid, makeStyles} from '@material-ui/core';
+import SwipeableViews from 'react-swipeable-views';
 
 const useStyles = makeStyles(theme =>({
     container: {
@@ -16,6 +18,7 @@ const useStyles = makeStyles(theme =>({
 
 export default function NavPanel(props) {
     const classes = useStyles();
+    const {TabIndex, setTabIndex} = useContext(TabIndexContext);
 
     return (
         <Grid 
@@ -24,8 +27,8 @@ export default function NavPanel(props) {
             alignItems="center"
             className={classes.container}>
             <SwipeableViews
-                index={props.index}
-                onChangeIndex={props.setIndex}>
+                index={TabIndex}
+                onChangeIndex={setTabIndex}>
                 <Review />
                 <Timeline />
                 <div>3</div>
